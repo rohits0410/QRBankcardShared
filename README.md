@@ -318,10 +318,10 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 👨‍💻 Author
 
-**Khanbala Rustamov**
-- Software Engineer @ eManat
-- GitHub: [@khanbala](https://github.com/khanbala)
-- LinkedIn: [Khanbala Rustamov](https://linkedin.com/in/khanbala)
+**Khanbala Rashidov**
+- Senior Software Engineer @ eManat
+- GitHub: [@KhanbalaRashidov](https://github.com/KhanbalaRashidov)
+- LinkedIn: [Khanbala Rashidov](https://www.linkedin.com/in/rashidovkhanbala/)
 
 ## 🙏 Acknowledgments
 
@@ -331,7 +331,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📞 Support
 
-For support, email support@cardmanager.com or create an issue in the repository.
+For support, email reshidovxanbala@gmail.com or create an issue in the repository.
 
 ---
 
