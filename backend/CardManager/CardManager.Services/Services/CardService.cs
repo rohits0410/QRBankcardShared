@@ -145,14 +145,6 @@ public class CardService : ICardService
             throw new InvalidOperationException("Token düzgün deyil");
         }
 
-        var currentTime = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
-        var tokenAge = currentTime - decoded.Timestamp;
-
-        if (tokenAge > 600)
-        {
-            throw new UnauthorizedAccessException("Token vaxtı keçib");
-        }
-
         var cards = await _unitOfWork.BankCards.FindAsync(c => c.UserId == decoded.UserId);
 
         return cards.OrderByDescending(c => c.CreatedAt).Select(c => new ShareCardResponse(

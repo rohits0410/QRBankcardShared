@@ -97,10 +97,11 @@ dotnet ef database update --project CardManager.Infrastructure --startup-project
 - Copy card number
 
 ### QR Sharing
-- Generate QR code
-- 10-minute expiry link
+- Generate permanent QR code
+- Shareable links (no expiration)
 - Mobile responsive view
 - Display full card details
+- Access control via link sharing
 
 ### Authentication
 - Register (username, email, password)

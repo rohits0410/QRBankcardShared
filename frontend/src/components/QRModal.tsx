@@ -68,7 +68,7 @@ export default function QRModal({ isOpen, onClose }: QRModalProps) {
 
     const link = document.createElement('a');
     link.href = qrDataUrl;
-    link.download = 'card-share-qr.png';
+    link.download = `cards-share-qr-${Date.now()}.png`;
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -88,7 +88,7 @@ export default function QRModal({ isOpen, onClose }: QRModalProps) {
             <div className="qr-header">
               <div className="qr-icon">📱</div>
               <p className="qr-description">
-                QR kodu skan edin və ya linki paylaşın
+                Bütün kartlarınızı paylaşmaq üçün QR kodu skan edin
               </p>
             </div>
 
@@ -113,7 +113,7 @@ export default function QRModal({ isOpen, onClose }: QRModalProps) {
               </div>
               <div className="instruction-item">
                 <span className="step">2</span>
-                <span>Brauzer açılacaq - kartların siyahısı görünəcək</span>
+                <span>Brauzer açılacaq - bütün kartlarınız görünəcək</span>
               </div>
               <div className="instruction-item">
                 <span className="step">3</span>
@@ -157,7 +157,10 @@ export default function QRModal({ isOpen, onClose }: QRModalProps) {
               <span className="warning-icon">⚠️</span>
               <div>
                 <strong>Diqqət!</strong>
-                <p>Link 10 dəqiqə ərzində etibarlıdır. Kartlarınızı təhlükəsiz saxlayın!</p>
+                <p>
+                  Bu link <strong>müddətsizdir</strong> və bütün kartlarınızı göstərir. 
+                  Yalnız etibarlı şəxslərlə paylaşın!
+                </p>
               </div>
             </div>
           </>
