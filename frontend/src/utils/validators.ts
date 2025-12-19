@@ -101,7 +101,7 @@ export const validateExpiryDate = (expiryDate: string): string | null => {
     return 'Bitmə tarixi çox uzaqdadır';
   }
   
-  return null;
+  return null; // Valid!
 };
 
 // Username validation

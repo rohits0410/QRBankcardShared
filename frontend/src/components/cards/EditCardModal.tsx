@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Modal from '@/components/common/Modal';
 import Input from '@/components/common/Input';
 import Button from '@/components/common/Button';
@@ -39,41 +39,58 @@ export default function EditCardModal({
         expiryDate: card.expiryDate,
         cardColor: card.cardColor,
       });
+      // Errors-u təmizlə
+      setErrors({});
     }
   }, [card]);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-
-    if (name === 'expiryDate') {
-      const formatted = formatExpiryDate(value);
-      if (formatted.length <= 5) {
-        setFormData({ ...formData, expiryDate: formatted });
-      }
-    } else {
-      setFormData({ ...formData, [name]: value });
-    }
-
-    if (errors[name]) {
-      setErrors({ ...errors, [name]: '' });
+  // Card name dəyişimi
+  const handleCardNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setFormData({ ...formData, cardName: value });
+    
+    // Error-u təmizlə
+    if (errors.cardName) {
+      setErrors({ ...errors, cardName: '' });
     }
   };
 
+  // Expiry date dəyişimi
+  const handleExpiryDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const formatted = formatExpiryDate(e.target.value);
+    setFormData({ ...formData, expiryDate: formatted });
+    
+    // Error-u təmizlə
+    if (errors.expiryDate) {
+      setErrors({ ...errors, expiryDate: '' });
+    }
+  };
+
+  // Color dəyişimi
+  const handleColorChange = (color: string) => {
+    setFormData({ ...formData, cardColor: color });
+  };
+
+  // Validation
   const validate = (): boolean => {
     const newErrors: Record<string, string> = {};
 
+    // Card name
     if (!formData.cardName.trim()) {
       newErrors.cardName = 'Kart adı tələb olunur';
     }
 
-    if (!validateExpiryDate(formData.expiryDate)) {
-      newErrors.expiryDate = 'Düzgün bitmə tarixi daxil edin (MM/YY)';
+    // Expiry date - validateExpiryDate string qaytarır (error mesajı) və ya null
+    const expiryError = validateExpiryDate(formData.expiryDate);
+    if (expiryError) {
+      newErrors.expiryDate = expiryError;
     }
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
+  // Submit
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -82,7 +99,6 @@ export default function EditCardModal({
     setLoading(true);
     try {
       await onSubmit(card.id, formData);
-      handleClose();
     } catch (error) {
       console.error('Edit card error:', error);
     } finally {
@@ -90,15 +106,10 @@ export default function EditCardModal({
     }
   };
 
-  const handleClose = () => {
-    setErrors({});
-    onClose();
-  };
-
   if (!card) return null;
 
   return (
-    <Modal isOpen={isOpen} onClose={handleClose} title="Kartı Redaktə Et" size="md">
+    <Modal isOpen={isOpen} onClose={onClose} title="Kartı Redaktə Et" size="md">
       <form onSubmit={handleSubmit} className="edit-card-form">
         {/* Card Number (disabled) */}
         <div className="disabled-field">
@@ -108,7 +119,6 @@ export default function EditCardModal({
             value={card.cardNumber}
             disabled
             icon={<CreditCard size={20} />}
-            fullWidth
           />
           <p className="field-note">Kart nömrəsi dəyişdirilə bilməz</p>
         </div>
@@ -116,36 +126,33 @@ export default function EditCardModal({
         {/* Card Name */}
         <Input
           label="Kart Adı"
-          name="cardName"
           type="text"
           placeholder="Məsələn: İş kartı, Şəxsi kart"
           value={formData.cardName}
-          onChange={handleChange}
+          onChange={handleCardNameChange}
           error={errors.cardName}
           icon={<CreditCard size={20} />}
-          fullWidth
-          autoComplete="off"
+          maxLength={50}
         />
 
         {/* Expiry Date */}
         <Input
           label="Bitmə Tarixi"
-          name="expiryDate"
           type="text"
           placeholder="MM/YY"
           value={formData.expiryDate}
-          onChange={handleChange}
+          onChange={handleExpiryDateChange}
           error={errors.expiryDate}
           icon={<Calendar size={20} />}
-          fullWidth
-          autoComplete="off"
+          maxLength={5}
+          inputMode="numeric"
         />
 
         {/* Color Picker */}
         <ColorPicker
           label="Kart Rəngi"
           value={formData.cardColor}
-          onChange={(color) => setFormData({ ...formData, cardColor: color })}
+          onChange={handleColorChange}
         />
 
         {/* Preview */}
@@ -154,14 +161,17 @@ export default function EditCardModal({
           <div
             className="card-preview-mini"
             style={{
-              background: `linear-gradient(135deg, ${formData.cardColor} 0%, ${adjustColor(formData.cardColor, -30)} 100%)`,
+              background: `linear-gradient(135deg, ${formData.cardColor} 0%, ${adjustColor(
+                formData.cardColor,
+                -30
+              )} 100%)`,
             }}
           >
             <div className="preview-chip"></div>
             <div className="preview-number">{card.cardNumber}</div>
             <div className="preview-footer">
-              <span className="preview-name">{formData.cardName}</span>
-              <span className="preview-expiry">{formData.expiryDate}</span>
+              <span className="preview-name">{formData.cardName || 'KART ADI'}</span>
+              <span className="preview-expiry">{formData.expiryDate || 'MM/YY'}</span>
             </div>
           </div>
         </div>
@@ -171,7 +181,7 @@ export default function EditCardModal({
           <Button
             type="button"
             variant="secondary"
-            onClick={handleClose}
+            onClick={onClose}
             disabled={loading}
           >
             Ləğv et
@@ -185,11 +195,23 @@ export default function EditCardModal({
   );
 }
 
-// Helper
+// Helper function
 function adjustColor(hex: string, percent: number): string {
   const num = parseInt(hex.replace('#', ''), 16);
-  const r = Math.min(255, Math.max(0, (num >> 16) + percent));
-  const g = Math.min(255, Math.max(0, ((num >> 8) & 0x00ff) + percent));
-  const b = Math.min(255, Math.max(0, (num & 0x0000ff) + percent));
-  return `#${((r << 16) | (g << 8) | b).toString(16).padStart(6, '0')}`;
+  const amt = Math.round(2.55 * percent);
+  const R = (num >> 16) + amt;
+  const G = ((num >> 8) & 0x00ff) + amt;
+  const B = (num & 0x0000ff) + amt;
+  return (
+    '#' +
+    (
+      0x1000000 +
+      (R < 255 ? (R < 1 ? 0 : R) : 255) * 0x10000 +
+      (G < 255 ? (G < 1 ? 0 : G) : 255) * 0x100 +
+      (B < 255 ? (B < 1 ? 0 : B) : 255)
+    )
+      .toString(16)
+      .slice(1)
+      .toUpperCase()
+  );
 }
