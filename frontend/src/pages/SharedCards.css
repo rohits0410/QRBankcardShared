@@ -1,0 +1,243 @@
+.shared-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: var(--spacing-xl);
+}
+
+/* Header */
+.shared-header {
+  text-align: center;
+  color: white;
+  margin-bottom: var(--spacing-2xl);
+  animation: slideDown 0.5s ease;
+}
+
+.shared-logo {
+  font-size: 80px;
+  margin-bottom: var(--spacing);
+  animation: bounce 2s infinite;
+}
+
+.shared-header h1 {
+  font-size: 36px;
+  margin: 0 0 var(--spacing-sm) 0;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.shared-header .card-count {
+  display: inline-block;
+  padding: 6px 16px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border-radius: var(--radius-full);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* Cards List */
+.shared-cards-list {
+  max-width: 600px;
+  margin: 0 auto var(--spacing-2xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.shared-card {
+  background: white;
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-xl);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  animation: slideUp 0.5s ease;
+}
+
+.shared-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-lg);
+}
+
+.card-type-badge {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  color: white;
+  padding: 6px 14px;
+  border-radius: var(--radius);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.card-name {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+/* Card Number */
+.card-number-section {
+  display: flex;
+  gap: var(--spacing);
+  align-items: center;
+  margin-bottom: var(--spacing-md);
+}
+
+.card-number-display {
+  flex: 1;
+  background: var(--bg-tertiary);
+  padding: var(--spacing-lg);
+  border-radius: var(--radius-md);
+  font-family: 'Courier New', monospace;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--text-primary);
+  border: 2px solid var(--border);
+  text-align: center;
+}
+
+.copy-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-md) var(--spacing-lg);
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  color: white;
+  border: none;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+  min-width: 120px;
+}
+
+.copy-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+}
+
+.copy-btn.copied {
+  background: linear-gradient(135deg, var(--success) 0%, #059669 100%);
+}
+
+.check-icon {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+/* Expiry */
+.card-expiry-display {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing) var(--spacing-md);
+  background: var(--bg-tertiary);
+  border-radius: var(--radius);
+  font-size: 14px;
+}
+
+.expiry-label {
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+.expiry-value {
+  font-family: 'Courier New', monospace;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+/* Error State */
+.shared-error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-2xl) var(--spacing-lg);
+  text-align: center;
+  min-height: 60vh;
+}
+
+.error-icon {
+  font-size: 80px;
+  margin-bottom: var(--spacing-lg);
+  animation: bounce 2s infinite;
+}
+
+.shared-error h2 {
+  font-size: 32px;
+  color: white;
+  margin: 0 0 var(--spacing) 0;
+}
+
+.shared-error p {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0 0 var(--spacing-xl) 0;
+}
+
+/* Footer */
+.shared-footer {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.warning-box {
+  background: rgba(255, 255, 255, 0.95);
+  padding: var(--spacing-lg);
+  border-radius: var(--radius-md);
+  display: flex;
+  gap: var(--spacing);
+  align-items: flex-start;
+  margin-bottom: var(--spacing-lg);
+  box-shadow: var(--shadow-lg);
+}
+
+.warning-icon {
+  font-size: 24px;
+  flex-shrink: 0;
+}
+
+.warning-box strong {
+  display: block;
+  color: var(--warning);
+  font-size: 15px;
+  margin-bottom: 4px;
+}
+
+.warning-box p {
+  color: var(--text-secondary);
+  font-size: 13px;
+  margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .shared-container {
+    padding: var(--spacing);
+  }
+
+  .shared-logo {
+    font-size: 60px;
+  }
+
+  .shared-header h1 {
+    font-size: 28px;
+  }
+
+  .card-number-section {
+    flex-direction: column;
+  }
+
+  .copy-btn {
+    width: 100%;
+  }
+
+  .card-number-display {
+    font-size: 18px;
+  }
+}

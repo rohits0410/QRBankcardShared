@@ -1,0 +1,231 @@
+.qr-modal-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xl);
+}
+
+.qr-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-2xl);
+  gap: var(--spacing);
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid var(--border-light);
+  border-top-color: var(--primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.qr-loading p {
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+/* Header */
+.qr-header {
+  text-align: center;
+}
+
+.qr-icon {
+  font-size: 60px;
+  margin-bottom: var(--spacing);
+  animation: bounce 2s infinite;
+}
+
+.qr-description {
+  color: var(--text-secondary);
+  font-size: 15px;
+  margin: 0;
+}
+
+/* QR Code */
+.qr-code-container {
+  display: flex;
+  justify-content: center;
+}
+
+.qr-code-wrapper {
+  position: relative;
+  padding: var(--spacing-lg);
+  background: white;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+}
+
+.qr-image {
+  width: 280px;
+  height: 280px;
+  display: block;
+  border-radius: var(--radius);
+}
+
+.qr-corners {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+}
+
+.corner {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border: 3px solid var(--primary);
+}
+
+.top-left {
+  top: var(--spacing);
+  left: var(--spacing);
+  border-right: none;
+  border-bottom: none;
+  border-radius: var(--radius) 0 0 0;
+}
+
+.top-right {
+  top: var(--spacing);
+  right: var(--spacing);
+  border-left: none;
+  border-bottom: none;
+  border-radius: 0 var(--radius) 0 0;
+}
+
+.bottom-left {
+  bottom: var(--spacing);
+  left: var(--spacing);
+  border-right: none;
+  border-top: none;
+  border-radius: 0 0 0 var(--radius);
+}
+
+.bottom-right {
+  bottom: var(--spacing);
+  right: var(--spacing);
+  border-left: none;
+  border-top: none;
+  border-radius: 0 0 var(--radius) 0;
+}
+
+/* Instructions */
+.qr-instructions {
+  background: var(--bg-tertiary);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing);
+}
+
+.instruction-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing);
+  font-size: 14px;
+  color: var(--text-primary);
+}
+
+.step {
+  width: 28px;
+  height: 28px;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 13px;
+  flex-shrink: 0;
+}
+
+/* Link Section */
+.qr-link-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.qr-link-section label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.link-input-group {
+  display: flex;
+  gap: var(--spacing-sm);
+}
+
+.share-link-input {
+  flex: 1;
+  padding: var(--spacing) var(--spacing-md);
+  border: 2px solid var(--border);
+  border-radius: var(--radius-md);
+  font-size: 13px;
+  font-family: monospace;
+  color: var(--text-secondary);
+  background: var(--bg-tertiary);
+}
+
+.share-link-input:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+/* Actions */
+.qr-actions {
+  display: flex;
+  gap: var(--spacing);
+}
+
+/* Note */
+.qr-note {
+  display: flex;
+  gap: var(--spacing);
+  align-items: flex-start;
+  padding: var(--spacing-md);
+  background: rgba(245, 158, 11, 0.1);
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.warning-icon {
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.qr-note strong {
+  display: block;
+  color: var(--warning);
+  font-size: 13px;
+  margin-bottom: 4px;
+}
+
+.qr-note p {
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .qr-image {
+    width: 220px;
+    height: 220px;
+  }
+
+  .link-input-group {
+    flex-direction: column;
+  }
+
+  .link-input-group button {
+    width: 100%;
+  }
+}

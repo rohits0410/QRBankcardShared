@@ -1,0 +1,29 @@
+# NuGet
+**/NuGet.Config
+**/nuget.config
+
+# Build results
+**/bin/
+**/obj/
+**/out/
+
+# User-specific files
+**/.vs/
+**/*.user
+**/*.suo
+**/*.userprefs
+**/*.pidb
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.bak
+*.tmp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# DevExpress
+**/DevExpress/
